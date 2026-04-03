@@ -447,7 +447,7 @@ with tab3:
                 with chart_col2:
                     fig_hist = px.histogram(results_df, x='Polarity', nbins=15, title="Polarity Score Variance",
                                             labels={'Polarity': 'Score (-1.0 to 1.0)'}, color_discrete_sequence=['#3498db'])
-                    st.plotly_chart(fig_hist, width=stretch)
+                    st.plotly_chart(fig_hist, width='stretch')
                     
                 # Interactive Data Table
                 st.subheader("📝 Processed Reviews & Scores")
