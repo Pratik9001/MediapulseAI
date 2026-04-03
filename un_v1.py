@@ -11,12 +11,11 @@ import requests
 st.set_page_config(page_title="CineML Recommender", page_icon="🎬", layout="wide")
 
 # --- DATA LOADING & PREPROCESSING ---
-GOOGLE_DRIVE_FILE_ID = '1Kobin3fbjzAXXjHYOJoJ2wgC354vcupd' # <-- REPLACE WITH YOUR ACTUAL ID
 
-# 2. Construct the direct download URL
-DATA_URL = f'https://drive.google.com/uc?export=download&id={GOOGLE_DRIVE_FILE_ID}'
 @st.cache_data
 def load_data():
+    GOOGLE_DRIVE_FILE_ID = '1Kobin3fbjzAXXjHYOJoJ2wgC354vcupd' # <-- REPLACE WITH YOUR ACTUAL ID
+    DATA_URL = f'https://drive.google.com/uc?export=download&id={GOOGLE_DRIVE_FILE_ID}'
     df = pd.read_csv(DATA_URL)
     
     # Safely parse stringified lists/dictionaries
