@@ -6,7 +6,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from textblob import TextBlob
 import plotly.express as px
-
+import requests
 # --- PAGE CONFIGURATION ---
 st.set_page_config(page_title="CineML Recommender", page_icon="🎬", layout="wide")
 
@@ -67,7 +67,6 @@ def compute_cosine_sim(df):
     return cosine_similarity(tfidf_matrix, tfidf_matrix)
 
 cosine_sim = compute_cosine_sim(df)
-import requests
 
 # --- TMDB API CONFIGURATION ---
 # Note: In a real app, store this in .streamlit/secrets.toml
