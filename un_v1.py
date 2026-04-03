@@ -204,9 +204,9 @@ with tab1:
     fig_ratings = px.bar(
         rating_counts, 
         x='Rating', 
-        y='Number of Movies', 
+        y='Count', 
        
-        color='Number of Movies',
+        color='Count',
         color_continuous_scale='Blues',
         hover_data={'Rating': True, 'Count': True}
     )
