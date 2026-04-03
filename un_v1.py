@@ -152,7 +152,7 @@ def show_movie_details(movie_row):
     col1, col2 = st.columns([1, 2])
     
     with col1:
-        st.image(movie_row['poster_url'], use_container_width=True)
+        st.image(movie_row['poster_url'], width='stretch')
         
     with col2:
         st.header(f"{movie_row['title']} ({movie_row['year']})")
@@ -258,7 +258,7 @@ with tab1:
                 det_col1, det_col2 = st.columns([1, 4])
                 
                 with det_col1:
-                    st.image(row['poster_url'], use_container_width=True)
+                    st.image(row['poster_url'], width='stretch')
                     
                 with det_col2:
                     directors = ", ".join(row['directors']) if isinstance(row['directors'], list) else "Unknown"
@@ -334,7 +334,7 @@ with tab2:
             grid_cols = st.columns(4)
             for idx, (_, row) in enumerate(results.iterrows()):
                 with grid_cols[idx % 4]:
-                    poster=st.image(get_safe_poster(row['poster_url'], row['title']), use_container_width=True)
+                    poster=st.image(get_safe_poster(row['poster_url'], row['title']), width='stretch')
                     if st.button(f"ℹ️ {row['title']}", key=f"search_res_{idx}"):
                         st.session_state.selected_movie_details = row
                         st.rerun()
@@ -361,7 +361,7 @@ with tab2:
             cols = st.columns(len(active_recs))
             for i, (_, row) in enumerate(active_recs.iterrows()):
                 with cols[i]:
-                    poster=st.image(get_safe_poster(row['poster_url'], row['title']), use_container_width=True)
+                    poster=st.image(get_safe_poster(row['poster_url'], row['title']), width='stretch')
                     if st.button(f"ℹ️ {row['title']}", key=f"rec_btn_{i}"):
                         st.session_state.selected_movie_details = row
                         st.rerun()
@@ -372,7 +372,7 @@ with tab2:
         with st.expander(f"🎬 Details: {movie['title']}", expanded=True):
             det_col1, det_col2 = st.columns([1, 3])
             with det_col1:
-                poster=st.image(get_safe_poster(movie['poster_url'], movie['title']), use_container_width=True)
+                poster=st.image(get_safe_poster(movie['poster_url'], movie['title']), width='stretch')
             with det_col2:
                 st.header(f"{movie['title']} ({movie['year']})")
                 st.write(f"**Rating:** ⭐ {movie['rating_val']}")
@@ -395,7 +395,7 @@ with tab3:
     col1, col2 = st.columns([1, 2])
     with col1:
         movie_for_sa = st.selectbox("Select a movie to analyze:", movies_with_reviews, key="sa_movie")
-        analyze_btn = st.button("Analyze Audience Mood", use_container_width=True)
+        analyze_btn = st.button("Analyze Audience Mood", width='stretch')
     
     if analyze_btn or 'sa_results' in st.session_state:
         movie_reviews = reviews_df[(reviews_df['movie'] == movie_for_sa) & (reviews_df['review_text'].str.strip() != '')]
