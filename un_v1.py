@@ -41,9 +41,9 @@ def load_data():
     return df
 
 @st.cache_data
-def get_user_reviews(df):
+def get_user_reviews(_df):
     all_reviews = []
-    for idx, row in df.iterrows():
+    for idx, row in _df.iterrows():
         for rev in row['reviews_list']:
             if isinstance(rev, dict) and 'username' in rev:
                 all_reviews.append({
@@ -60,9 +60,9 @@ reviews_df = get_user_reviews(df)
 
 # --- ML MODELS ---
 @st.cache_data
-def compute_cosine_sim(df):
+def compute_cosine_sim(_df):
     tfidf = TfidfVectorizer(stop_words='english')
-    tfidf_matrix = tfidf.fit_transform(df['combined_features'])
+    tfidf_matrix = tfidf.fit_transform(_df['combined_features'])
     return cosine_similarity(tfidf_matrix, tfidf_matrix)
 
 cosine_sim = compute_cosine_sim(df)
