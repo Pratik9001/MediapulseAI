@@ -219,7 +219,7 @@ with tab1:
     # This captures the user's click event on the chart
     selection = st.plotly_chart(
         fig_ratings, 
-        use_container_width=True, 
+        width=True, 
         on_select="rerun", 
         key="rating_dist_chart"
     )
@@ -279,14 +279,14 @@ with tab1:
         year_counts.columns = ['Year', 'Count']
         year_counts = year_counts.sort_values('Year')
         fig_years = px.line(year_counts, x='Year', y='Count', markers=True)
-        st.plotly_chart(fig_years, use_container_width=True)
+        st.plotly_chart(fig_years, width=True)
 
     with r2_col2:
         st.subheader("Most Frequently Cast Actors")
         all_cast = [actor for sublist in df['cast'] for actor in sublist]
         cast_df = pd.DataFrame(all_cast, columns=['Actor']).value_counts().reset_index(name='Count').head(10)
         fig_cast = px.bar(cast_df, x='Actor', y='Count', color='Count', color_continuous_scale='Cividis')
-        st.plotly_chart(fig_cast, use_container_width=True)
+        st.plotly_chart(fig_cast, width=True)
 
 # --- TAB 2: RECOMMENDER ENGINE ---
 with tab2:
@@ -442,12 +442,12 @@ with tab3:
                     fig_pie = px.pie(results_df, names='Sentiment', title="Sentiment Distribution", 
                                      color='Sentiment', color_discrete_map={'Positive':'#2ecc71', 'Neutral':'#95a5a6', 'Negative':'#e74c3c'},
                                      hole=0.4)
-                    st.plotly_chart(fig_pie, use_container_width=True)
+                    st.plotly_chart(fig_pie, width=True)
                     
                 with chart_col2:
                     fig_hist = px.histogram(results_df, x='Polarity', nbins=15, title="Polarity Score Variance",
                                             labels={'Polarity': 'Score (-1.0 to 1.0)'}, color_discrete_sequence=['#3498db'])
-                    st.plotly_chart(fig_hist, use_container_width=True)
+                    st.plotly_chart(fig_hist, width=True)
                     
                 # Interactive Data Table
                 st.subheader("📝 Processed Reviews & Scores")
