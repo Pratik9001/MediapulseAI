@@ -17,7 +17,7 @@ GOOGLE_DRIVE_FILE_ID = '1Kobin3fbjzAXXjHYOJoJ2wgC354vcupd' # <-- REPLACE WITH YO
 DATA_URL = f'https://drive.google.com/uc?export=download&id={GOOGLE_DRIVE_FILE_ID}'
 @st.cache_data
 def load_data():
-    df = pd.read_csv('DATA_URL')
+    df = pd.read_csv(DATA_URL)
     return df
     
     # Safely parse stringified lists/dictionaries
