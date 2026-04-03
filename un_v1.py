@@ -35,9 +35,9 @@ def load_data():
     df['rating_val'] = df['rating'].str.extract(r'([\d\.]+)').astype(float)
     
     # Create a combined features column for Content-Based Filtering
-    df['combined_features'] = df['synopsis'].fillna('') + " " + \
+    df['combined_features'] = (df['synopsis'].fillna('') + " " + \
                               df['genres'].apply(lambda x: ' '.join(x)) + " " + \
-                              df['directors'].apply(lambda x: ' '.join(x))
+                              df['directors'].apply(lambda x: ' '.join(x)))
     return df
 
 @st.cache_data
