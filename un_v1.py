@@ -204,11 +204,11 @@ with tab1:
     fig_ratings = px.bar(
         rating_counts, 
         x='Rating', 
-        y='Count', 
+        y='Number of Movies', 
        
-        color='Count',
+        color='Number of Movies',
         color_continuous_scale='Blues',
-        hover_data={'Rating': True, 'Count': True}
+        hover_data={'Rating': True, 'Number of Movies': True}
     )
     # Force the X-axis to treat ratings as distinct categories, not a continuous timeline
     fig_ratings.update_xaxes(type='category') 
