@@ -456,7 +456,7 @@ with tab3:
                         lambda x: 'color: #2ecc71;' if x == 'Positive' else ('color: #e74c3c;' if x == 'Negative' else 'color: #95a5a6;'),
                         subset=['Sentiment']
                     ),
-                    use_container_width=True,
+                    width='stretch',
                     hide_index=True
                 )
 
@@ -473,6 +473,6 @@ with tab4:
     
     st.dataframe(
         display_df[['title', 'year', 'rating', 'genres', 'directors', 'synopsis']], 
-        use_container_width=True, 
+        width='stretch', 
         height=600
     )
