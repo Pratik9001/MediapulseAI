@@ -12,4 +12,5 @@
 
 Configure your system's DNS address(if running on local machine) to bypass any blockage, to load TMDB posters
 
-<img width="692" height="767" alt="image" src="https://github.com/user-attachments/assets/62dd6ef4-7da7-431d-a5e7-ecbc6853ac08" />
+<img width="650" height="715" alt="image" src="https://github.com/user-attachments/assets/6387102c-fb2b-4193-8c5f-d0e3e3358d27" />
+
