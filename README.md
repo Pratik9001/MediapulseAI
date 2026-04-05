@@ -9,5 +9,7 @@
 <img width="670" height="867" alt="image" src="https://github.com/user-attachments/assets/1db8925d-26d3-4c5b-a509-b55d65ba8330" />
 <img width="663" height="852" alt="image" src="https://github.com/user-attachments/assets/0418c5d0-c256-496f-9ac5-5adf719032ec" />
 <img width="660" height="880" alt="image" src="https://github.com/user-attachments/assets/aa40d0b4-2384-4478-86fd-f6a81ddd34d1" />
+
 Configure your system's DNS address(if running on local machine) to bypass any blockage, to load TMDB posters
+
 <img width="692" height="767" alt="image" src="https://github.com/user-attachments/assets/62dd6ef4-7da7-431d-a5e7-ecbc6853ac08" />
