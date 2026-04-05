@@ -6,16 +6,27 @@ An AI-powered movie analytics and recommendation platform. Explore dataset stati
 Table of Contents
 
 Overview
+
 Features
+
 Project Structure
+
 Dataset Format
+
 Prerequisites
+
 Installation
+
 Running the App
+
 TMDB API Key Setup
+
 App Tabs & Usage
+
 How the ML Models Work
+
 Troubleshooting
+
 Dependencies
 
 
