@@ -1,9 +1,9 @@
-🎬 MediapulseAI
+#🎬 MediapulseAI
 
 An AI-powered movie analytics and recommendation platform. Explore dataset statistics, get personalized movie recommendations via Machine Learning, and analyze audience sentiment using NLP — all from a single interactive web app.
 
 
-Table of Contents
+#Table of Contents
 
 Overview
 
@@ -30,7 +30,8 @@ Troubleshooting
 Dependencies
 
 
-Overview
+#Overview
+
 MediapulseAI is a application that ingests a movie dataset (movies_data.csv) and provides:
 
 An interactive analytics dashboard with charts and clickable visualizations
@@ -39,21 +40,39 @@ An NLP sentiment analysis engine powered by TextBlob
 A searchable raw data explorer with download support
 
 
-Features
-FeatureDescription📊 DashboardMovie ratings distribution (clickable bars), release timeline, top cast actors🤖 Content-Based RecommenderTF-IDF + Cosine Similarity on synopsis, genre, and director metadata👥 Collaborative FilteringUser-based filtering using shared review history🎭 Sentiment AnalysisPer-movie NLP polarity scoring and sentiment distribution charts🔍 Global SearchFilter by title, genre, director, or cast member with poster grid display🎞️ TMDB Poster FallbackAuto-fetches movie posters from The Movie Database (TMDB) API when the CSV poster URL is missing🗄️ Raw Data ExplorerFull dataset view with searchable, scrollable dataframe
+#Features
 
-Project Structure
+FeatureDescription
+📊 Dashboard
+Movie ratings distribution (clickable bars), release timeline, top cast actors
+🤖 Content-Based Recommender
+TF-IDF + Cosine Similarity on synopsis, genre, and director metadata
+👥 Collaborative Filtering
+User-based filtering using shared review history
+🎭 Sentiment Analysis
+Per-movie NLP polarity scoring and sentiment distribution charts
+🔍 Global Search
+Filter by title, genre, director, or cast member with poster grid display
+🎞️ TMDB Poster 
+FallbackAuto-fetches movie posters from The Movie Database (TMDB) API when the CSV poster URL is missing🗄️ Raw Data 
+ExplorerFull dataset view with searchable, scrollable dataframe
+
+#Project Structure
+
 mediapulse-ai/
+
 │
 ├── un_v1.py            # Main Streamlit application (entry point)
 ├── movies_data.csv     # Movie dataset (required — must be in the same directory)
 ├── requirements.txt    # Python dependencies
 └── README.md           # This file
 
+
 ⚠️ Important: movies_data.csv must be placed in the same directory as un_v1.py. The app uses a relative path (pd.read_csv('movies_data.csv')) to load data.
 
 
-Dataset Format
+#Dataset Format
+
 The app expects movies_data.csv to contain the following columns:
 ColumnTypeDescriptionExampletitlestrMovie title"Inception"yearintRelease year2010ratingstrRating string with numeric value"4.5/5"genresstr (list literal)Stringified Python list of genres"['Action', 'Sci-Fi']"directorsstr (list literal)Stringified Python list of director names"['Christopher Nolan']"caststr (list literal)Stringified Python list of cast members"['Leonardo DiCaprio', 'Joseph Gordon-Levitt']"synopsisstrMovie description / plot summary"A thief who steals corporate secrets..."poster_urlstrURL to the movie poster image"https://image.tmdb.org/..."reviewsstr (list of dicts literal)Stringified Python list of review dicts"[{'username': 'user1', 'review_text': 'Great!', 'likes': 10}]"
 Review dict structure (inside the reviews column):
@@ -66,7 +85,7 @@ python{
 The app uses ast.literal_eval() to safely parse the stringified lists and dicts. Ensure these columns are formatted as valid Python literals.
 
 
-Prerequisites
+#Prerequisites
 
 Python 3.9 or higher (Python 3.10+ recommended)
 pip (Python package installer)
@@ -74,27 +93,27 @@ An active internet connection (for TMDB API poster fetching)
 
 Check your Python version:
 bashpython --version
-# or
+or
 python3 --version
 
-Installation
+#Installation
 Step 1 — Clone or download the project
 Place all files (un_v1.py, movies_data.csv, requirements.txt) in a single project folder:
 bashmkdir mediapulse-ai
 cd mediapulse-ai
-# Copy your files here
+Copy your files here
 Step 2 — Create a virtual environment (recommended)
 Using a virtual environment prevents dependency conflicts with other Python projects on your machine.
-bash# Create the virtual environment
+bash Create the virtual environment
 python -m venv venv
 
-# Activate it — macOS / Linux
+Activate it — macOS / Linux
 source venv/bin/activate
 
-# Activate it — Windows (Command Prompt)
+Activate it — Windows (Command Prompt)
 venv\Scripts\activate.bat
 
-# Activate it — Windows (PowerShell)
+Activate it — Windows (PowerShell)
 venv\Scripts\Activate.ps1
 Step 3 — Install dependencies
 bashpip install -r requirements.txt
@@ -114,7 +133,7 @@ bashpython -m textblob.download_corpora
 If that command fails, try:
 bashpython -c "import nltk; nltk.download('punkt'); nltk.download('averaged_perceptron_tagger')"
 
-Running the App
+#Running the App
 From inside your project directory (with your virtual environment activated):
 bash streamlit run un_v1.py
 Streamlit will start a local server and print output like:
@@ -125,12 +144,12 @@ Streamlit will start a local server and print output like:
 Open http://localhost:8501 in your browser. The app will load automatically.
 To stop the server, press Ctrl + C in your terminal.
 
-TMDB API Key Setup
+#TMDB API Key Setup
 The app uses the TMDB (The Movie Database) API to fetch movie poster images when a valid poster URL is not found in the CSV. The key is currently hardcoded in the script:
 pythonTMDB_API_KEY = "YOUR_ACTUAL_API_KEY_HERE"
 Using your own TMDB API key (recommended for production)
 
-Create a free account at https://www.themoviedb.org/
+#Create a free account at https://www.themoviedb.org/
 Go to Settings → API and request an API key (free for non-commercial use)
 Create a secrets file for Streamlit:
 
@@ -148,7 +167,7 @@ pythonTMDB_API_KEY = st.secrets["tmdb_api_key"]
 If no TMDB API key is configured and a poster URL in the CSV is invalid, the app will display a placeholder image automatically — the app will not crash.
 
 
-App Tabs & Usage
+#App Tabs & Usage
 📊 Tab 1 — Dashboard
 Displays high-level statistics about the loaded dataset:
 
@@ -186,7 +205,7 @@ Browse a color-coded review table showing each reviewer's sentiment and score
 🗄️ Tab 4 — Raw Data
 Displays the cleaned dataset in a scrollable, full-height table. Columns shown: title, year, rating, genres, directors, synopsis.
 
-How the ML Models Work
+#How the ML Models Work
 Content-Based Filtering (TF-IDF + Cosine Similarity)
 
 A combined_features column is built by concatenating each movie's synopsis, genres, and directors into a single text string.
@@ -209,7 +228,7 @@ Reviews are bucketed: > 0.1 → Positive, < -0.1 → Negative, otherwise Neutral
 Aggregated metrics and per-review scores are displayed in the UI.
 
 
-Troubleshooting
+#Troubleshooting
 FileNotFoundError: movies_data.csv
 The CSV file must be in the same directory as un_v1.py. Run streamlit run un_v1.py from that directory.
 ModuleNotFoundError: No module named 'textblob'
@@ -227,7 +246,7 @@ Streamlit version conflicts (on_select not recognized)
 The Dashboard's clickable chart requires Streamlit 1.35+. Upgrade with:
 bashpip install --upgrade streamlit
 
-Dependencies
+#Dependencies
 PackagePurposestreamlitWeb UI framework and interactive widget renderingpandasData loading, transformation, and filteringnumpyNumerical computations (polarity averaging, etc.)scikit-learnTF-IDF vectorization and cosine similaritytextblobNLP sentiment polarity scoringplotlyInteractive charts (bar, pie, line, histogram)requestsHTTP calls to the TMDB API for poster imagesastSafe parsing of stringified Python lists/dicts in CSV
 
 Built with ❤️ using Streamlit, scikit-learn, and TextBlob.
